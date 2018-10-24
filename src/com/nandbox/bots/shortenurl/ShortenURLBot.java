@@ -12,7 +12,7 @@ import com.nandbox.inmessages.ChatMember;
 import com.nandbox.inmessages.ChatMenuCallback;
 import com.nandbox.inmessages.IncomingMessage;
 import com.nandbox.inmessages.InlineMessageCallback;
-import com.nandbox.inmessages.MyProfile;
+import com.nandbox.inmessages.Profile;
 
 import net.minidev.json.JSONObject;
 
@@ -29,7 +29,6 @@ public class ShortenURLBot {
 			@Override
 			public void onConnect(Nandbox.Api api) {
 				this.api = api;
-				api.setEcho(false);
 			}
 
 			@Override
@@ -100,18 +99,38 @@ public class ShortenURLBot {
 			}
 
 			@Override
-			public void onMyProfile(MyProfile myprofile) {
-
+			public void onMyProfile(Profile user) {
+								
 			}
 
 			@Override
-			public void onUserJoinedBot(JSONObject obj) {
-
+			public void onUser(Profile user) {
+				
+				
 			}
 
 			@Override
-			public void userStartedBot(JSONObject obj) {
+			public void onUserJoinedBot(Profile user) {
+				
+				
+			}
 
+			@Override
+			public void userLeftBot(Profile user) {
+				
+				
+			}
+
+			@Override
+			public void userStartedBot(Profile user) {
+				
+				
+			}
+
+			@Override
+			public void userStoppedBot(Profile user) {
+				
+				
 			}
 
 		});
