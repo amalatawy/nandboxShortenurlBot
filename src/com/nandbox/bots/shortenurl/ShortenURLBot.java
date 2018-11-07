@@ -5,14 +5,14 @@ import static com.nandbox.bots.shortenurl.util.Utility.isNotEmpty;
 
 import java.util.Calendar;
 
-import com.nandbox.Nandbox;
-import com.nandbox.NandboxClient;
-import com.nandbox.inmessages.ChatAdministrators;
-import com.nandbox.inmessages.ChatMember;
-import com.nandbox.inmessages.ChatMenuCallback;
-import com.nandbox.inmessages.IncomingMessage;
-import com.nandbox.inmessages.InlineMessageCallback;
-import com.nandbox.inmessages.Profile;
+import com.nandbox.bots.api.Nandbox;
+import com.nandbox.bots.api.NandboxClient;
+import com.nandbox.bots.api.inmessages.ChatAdministrators;
+import com.nandbox.bots.api.inmessages.ChatMember;
+import com.nandbox.bots.api.inmessages.ChatMenuCallback;
+import com.nandbox.bots.api.inmessages.IncomingMessage;
+import com.nandbox.bots.api.inmessages.InlineMessageCallback;
+import com.nandbox.bots.api.inmessages.Profile;
 
 import net.minidev.json.JSONObject;
 
@@ -61,9 +61,9 @@ public class ShortenURLBot {
 
 						replyMsg = shortURLReply;
 
-						String reference = String.valueOf(Calendar.getInstance().getTimeInMillis());
+						Long reference = Calendar.getInstance().getTimeInMillis();
 
-						api.sendText(chatId, replyMsg, reference, null, null, true, null);
+						api.sendText(chatId, replyMsg, reference, null, null, true, null,null);
 
 					}
 				} else {

@@ -20,7 +20,7 @@ public class GoogleShortenURL {
 	 * Bring your google shorten APK token from Google and set it in
 	 * GOOGLE_SHORTNER_TOKEN constant
 	 */
-	 private static final String GOOGLE_SHORTNER_TOKEN = "PUT YOUR GOOGLE SHORTNER";
+	 private static final String GOOGLE_SHORTNER_TOKEN = "AIzaSyDHLSxK4u1w_OGTA4ZF2N_Y6aVBoRC_F_I" ;
 	// URL API TOKEN HERE";
 	private static final String GOOGLE_SHORTEN_URL = " https://www.googleapis.com/urlshortener/v1/url?key="
 			+ GOOGLE_SHORTNER_TOKEN;
