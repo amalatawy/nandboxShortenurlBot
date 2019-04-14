@@ -3,16 +3,18 @@ package com.nandbox.bots.shortenurl;
 import static com.nandbox.bots.shortenurl.util.Utility.getTokenFromPropFile;
 import static com.nandbox.bots.shortenurl.util.Utility.isNotEmpty;
 
-import java.util.Calendar;
-
 import com.nandbox.bots.api.Nandbox;
 import com.nandbox.bots.api.NandboxClient;
+import com.nandbox.bots.api.data.Chat;
+import com.nandbox.bots.api.data.User;
 import com.nandbox.bots.api.inmessages.ChatAdministrators;
 import com.nandbox.bots.api.inmessages.ChatMember;
 import com.nandbox.bots.api.inmessages.ChatMenuCallback;
 import com.nandbox.bots.api.inmessages.IncomingMessage;
 import com.nandbox.bots.api.inmessages.InlineMessageCallback;
-import com.nandbox.bots.api.inmessages.Profile;
+import com.nandbox.bots.api.inmessages.InlineSearch;
+import com.nandbox.bots.api.inmessages.MessageAck;
+import com.nandbox.bots.api.inmessages.PermanentUrl;
 
 import net.minidev.json.JSONObject;
 
@@ -52,29 +54,22 @@ public class ShortenURLBot {
 				String chatId = incomingMsg.getChat().getId();
 				String replyMsg;
 				System.out.println("incomingMsg.getType() : " + incomingMsg.getType());
-				if ("text".equals(incomingMsg.getType())) {
+				if (incomingMsg.isTextMsg()) {
 
-					GoogleShortenURL googleShortenURL = new GoogleShortenURL();
+					ShortenURL googleShortenURL = new ShortenURL();
 					String shortURLReply = googleShortenURL.getShortURL(incomingMsg.getText());
 
 					if (isNotEmpty(shortURLReply)) {
 
 						replyMsg = shortURLReply;
 
-						Long reference = Calendar.getInstance().getTimeInMillis();
-
-						api.sendText(chatId, replyMsg, reference, null, null, true, null,null);
+						api.sendText(chatId, replyMsg);
 
 					}
 				} else {
 					replyMsg = ("This bot supports text only, please send URL link");
 					api.sendText(chatId, replyMsg);
 				}
-
-			}
-
-			@Override
-			public void onMessagAckCallback(JSONObject obj) {
 
 			}
 
@@ -99,38 +94,53 @@ public class ShortenURLBot {
 			}
 
 			@Override
-			public void onMyProfile(Profile user) {
-								
+			public void onChatDetails(Chat chat) {
+
 			}
 
 			@Override
-			public void onUser(Profile user) {
-				
-				
+			public void onInlineSearh(InlineSearch inlineSearch) {
+
 			}
 
 			@Override
-			public void onUserJoinedBot(Profile user) {
-				
-				
+			public void onMessagAckCallback(MessageAck msgAck) {
+
 			}
 
 			@Override
-			public void userLeftBot(Profile user) {
-				
-				
+			public void onMyProfile(User user) {
+
 			}
 
 			@Override
-			public void userStartedBot(Profile user) {
-				
-				
+			public void onUserDetails(User user) {
+
 			}
 
 			@Override
-			public void userStoppedBot(Profile user) {
-				
-				
+			public void onUserJoinedBot(User user) {
+
+			}
+
+			@Override
+			public void permanentUrl(PermanentUrl permenantUrl) {
+
+			}
+
+			@Override
+			public void userLeftBot(User user) {
+
+			}
+
+			@Override
+			public void userStartedBot(User user) {
+
+			}
+
+			@Override
+			public void userStoppedBot(User user) {
+
 			}
 
 		});
