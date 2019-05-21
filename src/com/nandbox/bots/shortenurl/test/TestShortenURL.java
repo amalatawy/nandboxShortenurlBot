@@ -6,8 +6,8 @@ public class TestShortenURL {
 
 	public static void main(String[] args) throws Exception {
 		String longURL = "www.nandbox.com";
-		ShortenURL googleShortenURL = new ShortenURL();
-		System.out.println("UR SHORTEN URL <> " + googleShortenURL.getShortURL(longURL));
+		ShortenURL shortenurl = new ShortenURL();
+		System.out.println("SHORTEN URL :  " + shortenurl.getShortURL(longURL));
 
 	}
 }

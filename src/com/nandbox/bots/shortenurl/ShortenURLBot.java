@@ -56,8 +56,8 @@ public class ShortenURLBot {
 				System.out.println("incomingMsg.getType() : " + incomingMsg.getType());
 				if (incomingMsg.isTextMsg()) {
 
-					ShortenURL googleShortenURL = new ShortenURL();
-					String shortURLReply = googleShortenURL.getShortURL(incomingMsg.getText());
+					ShortenURL shortenURL = new ShortenURL();
+					String shortURLReply = shortenURL.getShortURL(incomingMsg.getText());
 
 					if (isNotEmpty(shortURLReply)) {
 
